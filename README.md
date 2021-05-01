@@ -40,7 +40,7 @@
 
 > heroku app域名为appname.herokuapp.com。项目内配置文件为./config/config.yaml
 
-配置文件模板见 config/config.yaml 文件，可选项区域均可不填。完整配置选项请查看[配置文件说明](https://github.com/892947707/proxypool/wiki/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)。
+配置文件模板见 config/config.yaml 文件，可选项区域均可不填。完整配置选项请查看[配置文件说明](https://github.com/Sansui233/proxypool/wiki/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)。
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
@@ -75,14 +75,14 @@ $ make
 
 ### 4. 下载预编译程序
 
-从这里下载预编译好的程序 [release](https://github.com/892947707/proxypool/releases)。
+~从这里下载预编译好的程序 [release](https://github.com/892947707/proxypool/releases)。
 
-### 5. 使用docker
+### 5. 使用docker（推荐）
 
 运行下面的命令下载 proxypool 镜像
 
 ```shell
-$ docker pull ghcr.io/892947707/proxypool:latest
+$ docker pull 892947707/proxypool:latest
 ```
 
 然后运行 proxypool 即可
@@ -92,7 +92,7 @@ $ docker run -d --restart=always \
   --name=proxypool \
   -p 12580:12580 \
   -v /path/to/config:/proxypool-src/config \
-  ghcr.io/892947707/proxypool \
+  892947707/proxypool \
   -c config/config.yaml
 ```
 
@@ -126,7 +126,7 @@ $ proxypool -c ./config/config.yaml
 
 ## 本地检查节点可用性
 
-此项非必须。为了提高实际可用性，可选择增加一个本地服务器，检测远程proxypool节点在本地的可用性并提供配置，见[proxypoolCheck](https://github.com/892947707/proxypoolCheck)。
+此项非必须。为了提高实际可用性，可选择增加一个本地服务器，检测远程proxypool节点在本地的可用性并提供配置，见[proxypoolCheck](https://github.com/Sansui233/proxypoolCheck)。
 
 ## 截图
 
