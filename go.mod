@@ -2,7 +2,7 @@
 
 module github.com/892947707/proxypool
 
-go 1.16
+go 1.15
 
 require (
 	github.com/Dreamacro/clash v1.5.0
