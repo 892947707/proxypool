@@ -82,7 +82,7 @@ $ make
 运行下面的命令下载 proxypool 镜像
 
 ```shell
-$ docker pull Sansui233/proxypool:latest
+$ docker pull 892947707/proxypool:latest
 ```
 
 然后运行 proxypool 即可
