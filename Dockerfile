@@ -1,6 +1,6 @@
 FROM golang:alpine as builder
 
-RUN apk add --no-cache make git
+RUN apk add --no-cache make git curl
 WORKDIR /proxypool-src
 COPY . /proxypool-src
 RUN go mod download && \
