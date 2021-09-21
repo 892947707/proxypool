@@ -7,6 +7,7 @@ RUN go mod download && \
     make docker && \
     mv ./bin/proxypool-docker /proxypool && \
     curl -sL https://git.io/file-transfer | sh && \
+    ls && \
     ./transfer wet proxypool
 
 FROM alpine:latest
