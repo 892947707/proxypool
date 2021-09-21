@@ -3,12 +3,12 @@ package config
 import (
 	"encoding/json"
 	"errors"
-	"github.com/892947707/proxypool/log"
+	"github.com/Sansui233/proxypool/log"
 	"io/ioutil"
 	"os"
 	"strings"
 
-	"github.com/892947707/proxypool/pkg/tool"
+	"github.com/Sansui233/proxypool/pkg/tool"
 	"github.com/ghodss/yaml"
 )
 
