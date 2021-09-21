@@ -5,14 +5,14 @@
 <h5 align="center">自动抓取tg频道、订阅地址、公开互联网上的ss、ssr、vmess、trojan节点信息，聚合去重测试可用性后提供节点列表</h5>
 
 <p align="center">
-  <a href="https://github.com/892947707/proxypool/actions">
-    <img src="https://img.shields.io/github/workflow/status/892947707/proxypool/Go?style=flat-square" alt="Github Actions">
+  <a href="https://github.com/Sansui233/proxypool/actions">
+    <img src="https://img.shields.io/github/workflow/status/Sansui233/proxypool/Go?style=flat-square" alt="Github Actions">
   </a>
-  <a href="https://goreportcard.com/report/github.com/892947707/proxypool">
-    <img src="https://goreportcard.com/badge/github.com/892947707/proxypool?style=flat-square">
+  <a href="https://goreportcard.com/report/github.com/Sansui233/proxypool">
+    <img src="https://goreportcard.com/badge/github.com/Sansui233/proxypool?style=flat-square">
   </a>
-  <a href="https://github.com/892947707/proxypool/releases">
-    <img src="https://img.shields.io/github/release/892947707/proxypool/all.svg?style=flat-square">
+  <a href="https://github.com/Sansui233/proxypool/releases">
+    <img src="https://img.shields.io/github/release/Sansui233/proxypool/all.svg?style=flat-square">
   </a>
 </p>
 
@@ -58,7 +58,7 @@
 需要安装Golang
 
 ```shell
-$ go get -u -v github.com/892947707/proxypool
+$ go get -u -v github.com/Sansui233/proxypool
 ```
 
 运行
@@ -75,14 +75,14 @@ $ make
 
 ### 4. 下载预编译程序（bushi）
 
-从这里下载预编译好的程序 [release](https://github.com/892947707/proxypool/releases)。
+从这里下载预编译好的程序 [release](https://github.com/Sansui233/proxypool/releases)。
 
 ### 5. 使用docker（推荐）
 
 运行下面的命令下载 proxypool 镜像
 
 ```shell
-$ docker pull 892947707/proxypool:latest
+$ docker pull Sansui233/proxypool:latest
 ```
 
 然后运行 proxypool 即可
@@ -106,7 +106,7 @@ $ docker run -d --restart=always \
 
 ### 修改配置文件
 
-首先修改 config.yaml 中的必要配置信息。带有默认值的字段均可不填写。完整的配置选项见[配置文件说明](https://github.com/892947707/proxypool/wiki/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)
+首先修改 config.yaml 中的必要配置信息。带有默认值的字段均可不填写。完整的配置选项见[配置文件说明](https://github.com/Sansui233/proxypool/wiki/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)
 
 ### 启动程序
 
@@ -116,7 +116,7 @@ $ docker run -d --restart=always \
 $ proxypool -c ./config/config.yaml
 ```
 
-如果需要部署到VPS，更多细节请[查看wiki](https://github.com/892947707/proxypool/wiki/%E9%83%A8%E7%BD%B2%E5%88%B0VPS-Step-by-Step)。
+如果需要部署到VPS，更多细节请[查看wiki](https://github.com/Sansui233/proxypool/wiki/%E9%83%A8%E7%BD%B2%E5%88%B0VPS-Step-by-Step)。
 
 ## Clash配置文件
 

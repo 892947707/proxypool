@@ -1,10 +1,10 @@
 package database
 
 import (
-	"github.com/892947707/proxypool/log"
+	"github.com/Sansui233/proxypool/log"
 	"os"
 
-	"github.com/892947707/proxypool/config"
+	"github.com/Sansui233/proxypool/config"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"

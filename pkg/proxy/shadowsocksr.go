@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/892947707/proxypool/pkg/tool"
+	"github.com/Sansui233/proxypool/pkg/tool"
 )
 
 var (
