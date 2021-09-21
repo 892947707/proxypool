@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"github.com/892947707/proxypool/pkg/geoIp"
+	"github.com/Sansui233/proxypool/pkg/geoIp"
 	_ "net/http/pprof"
 	"os"
 
