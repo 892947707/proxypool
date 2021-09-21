@@ -28,6 +28,7 @@ func main() {
 	log.SetLevel(log.INFO)
 	if debugMode {
 		log.SetLevel(log.DEBUG)
+		log.Debugln("=======Debug Mode=======")
 	}
 	if configFilePath == "" {
 		configFilePath = os.Getenv("CONFIG_FILE")

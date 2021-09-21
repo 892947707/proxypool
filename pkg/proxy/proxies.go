@@ -150,7 +150,7 @@ func (ps *ProxyList) UniqAppendProxyList(new ProxyList) ProxyList {
 	}
 	for _, p := range new {
 		isExist := false
-		for i, _ := range *ps {
+		for i := range *ps {
 			if (*ps)[i].Identifier() == p.Identifier() {
 				isExist = true
 				break
@@ -169,7 +169,7 @@ func (ps *ProxyList) UniqAppendProxy(new Proxy) ProxyList {
 		*ps = append(*ps, new)
 		return *ps
 	}
-	for i, _ := range *ps {
+	for i := range *ps {
 		if (*ps)[i].Identifier() == new.Identifier() {
 			return *ps
 		}

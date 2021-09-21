@@ -1,8 +1,10 @@
 package healthcheck
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/892947707/proxypool/log"
 	"github.com/892947707/proxypool/pkg/proxy"
 	"sync"
 	"time"
@@ -14,7 +16,13 @@ import (
 
 func CleanBadProxiesWithGrpool(proxies []proxy.Proxy) (cproxies []proxy.Proxy) {
 	// Note: Grpool实现对go并发管理的封装，主要是在数据量大时减少内存占用，不会提高效率。
-	pool := grpool.NewPool(500, 200)
+	log.Debugln("[delaycheck.go] connection: %d, timeout: %.2fs", DelayConn, DelayTimeout.Seconds())
+	numWorker := DelayConn
+	numJob := 1
+	if numWorker > 4 {
+		numJob = (numWorker + 2) / 3
+	}
+	pool := grpool.NewPool(numWorker, numJob)
 	cproxies = make(proxy.ProxyList, 0, 500)
 
 	m := sync.Mutex{}
@@ -66,13 +74,9 @@ func testDelay(p proxy.Proxy) (delay uint16, err error) {
 	if err != nil {
 		return
 	}
-
 	pmap["port"] = int(pmap["port"].(float64))
 	if p.TypeName() == "vmess" {
 		pmap["alterId"] = int(pmap["alterId"].(float64))
-		if network, ok := pmap["network"]; ok && network.(string) == "h2" {
-			return 0, nil // todo 暂无方法测试h2的延迟，clash对于h2的connection会阻塞
-		}
 	}
 
 	clashProxy, err := outbound.ParseProxy(pmap)
@@ -81,13 +85,40 @@ func testDelay(p proxy.Proxy) (delay uint16, err error) {
 		return 0, err
 	}
 
-	sTime := time.Now()
-	err = HTTPHeadViaProxy(clashProxy, "http://www.gstatic.com/generate_204")
-	if err != nil {
-		return 0, err
-	}
-	fTime := time.Now()
-	delay = uint16(fTime.Sub(sTime) / time.Millisecond)
+	// Custom context time to avoid unexpected connection block due to dependency
+	respC := make(chan uint16)
+	m := sync.Mutex{}
+	closed := false
+	defer close(respC)
+	go func() {
+		sTime := time.Now()
+		err = HTTPHeadViaProxy(clashProxy, "http://www.gstatic.com/generate_204")
+		m.Lock()
+		if closed {
+			m.Unlock()
+			return
+		}
+		m.Unlock()
+		if err != nil {
+			respC <- 0
+			return
+		}
+		fTime := time.Now()
+		d := uint16(fTime.Sub(sTime) / time.Millisecond)
+		respC <- d
+	}()
 
-	return delay, nil
+	select {
+	case delay = <-respC:
+		m.Lock()
+		closed = true
+		m.Unlock()
+		return delay, nil
+	case <-time.After(DelayTimeout * 2):
+		log.Debugln("unexpected delay check timeout error in proxy %s\n", p.Link())
+		m.Lock()
+		closed = true
+		m.Unlock()
+		return 0, context.DeadlineExceeded
+	}
 }

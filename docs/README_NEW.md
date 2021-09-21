@@ -5,6 +5,13 @@ Clash客户端支持：
 
 ## New
 
+2021-06-03
+- 修复自定义timeout(v0.7.1)中send on closed channel问题 (v0.7.3)
+- 新增健康检测并发数配置（v0.7.2)
+
+2021-04-29
+- delaycheck中实现强制超时取消，以避免由于依赖问题引起的阻塞
+
 2021-04-20(v0.7.0)
 - 添加自定义healcheck timeout，因此配置文件参数改变，healthCheck包接口略微增加
 - 修改中转节点的Query接口

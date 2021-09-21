@@ -22,14 +22,14 @@ func init() {
 	//}
 }
 
-func initDir(path string) bool {
-	if _, err := os.Stat(path); os.IsNotExist(err) {
-		if err := os.Mkdir(path, 0755); err != nil {
-			Errorln("init log dir error: %s", err.Error())
-		}
-	}
-	return true
-}
+// func initDir(path string) bool {
+// 	if _, err := os.Stat(path); os.IsNotExist(err) {
+// 		if err := os.Mkdir(path, 0755); err != nil {
+// 			Errorln("init log dir error: %s", err.Error())
+// 		}
+// 	}
+// 	return true
+// }
 
 func initFile(path string) *os.File {
 	// TODO detect old log files and compress

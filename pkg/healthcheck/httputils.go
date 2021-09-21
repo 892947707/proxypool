@@ -2,7 +2,6 @@ package healthcheck
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	C "github.com/Dreamacro/clash/constant"
 	"github.com/892947707/proxypool/pkg/proxy"
@@ -135,7 +134,7 @@ func HTTPHeadViaProxy(clashProxy C.Proxy, url string) error {
 		return err
 	}
 	if resp.StatusCode >= 400 {
-		return errors.New(fmt.Sprintf("%d %s for proxy %s %s", resp.StatusCode, resp.Status, clashProxy.Name(), clashProxy.Addr()))
+		return fmt.Errorf("%d %s for proxy %s %s", resp.StatusCode, resp.Status, clashProxy.Name(), clashProxy.Addr())
 	}
 	resp.Body.Close()
 	return nil

@@ -73,9 +73,9 @@ $ go run main.go -c ./config/config.yaml
 $ make
 ```
 
-### 4. 下载预编译程序
+### 4. 下载预编译程序（bushi）
 
-~从这里下载预编译好的程序 [release](https://github.com/892947707/proxypool/releases)。
+从这里下载预编译好的程序 [release](https://github.com/892947707/proxypool/releases)。
 
 ### 5. 使用docker（推荐）
 

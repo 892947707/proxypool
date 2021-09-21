@@ -2,10 +2,11 @@ package getter
 
 import (
 	"fmt"
-	"github.com/892947707/proxypool/log"
 	"io/ioutil"
 	"strings"
 	"sync"
+
+	"github.com/892947707/proxypool/log"
 
 	"github.com/892947707/proxypool/pkg/proxy"
 	"github.com/892947707/proxypool/pkg/tool"
@@ -27,11 +28,11 @@ type TGChannelGetter struct {
 func NewTGChannelGetter(options tool.Options) (getter Getter, err error) {
 	num, found := options["num"]
 	t := 200
-	switch num.(type) {
+	switch num := num.(type) {
 	case int:
-		t = num.(int)
+		t = num
 	case float64:
-		t = int(num.(float64))
+		t = int(num)
 	}
 
 	if !found || t <= 0 {
@@ -87,6 +88,9 @@ func (g *TGChannelGetter) Get() proxy.ProxyList {
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil
+	}
 	items := strings.Split(string(body), "\n")
 	for _, s := range items {
 		if strings.Contains(s, "enclosure url") { // get to xml node
