@@ -16,6 +16,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
+           go mod tidy
            docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/proxypool
            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
            docker push ${{ secrets.DOCKER_USERNAME }}/proxypool
