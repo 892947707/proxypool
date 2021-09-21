@@ -13,8 +13,8 @@ import (
 
 	"github.com/Dreamacro/clash/adapters/outbound"
 	C "github.com/Dreamacro/clash/constant"
-	"github.com/Sansui233/proxypool/log"
-	"github.com/Sansui233/proxypool/pkg/proxy"
+	"github.com/892947707/proxypool/log"
+	"github.com/892947707/proxypool/pkg/proxy"
 	"github.com/ivpusic/grpool"
 )
 
